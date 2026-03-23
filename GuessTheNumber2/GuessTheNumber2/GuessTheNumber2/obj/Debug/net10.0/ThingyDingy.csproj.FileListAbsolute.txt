@@ -1,0 +1,14 @@
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/bin/Debug/net10.0/ThingyDingy
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/bin/Debug/net10.0/ThingyDingy.deps.json
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/bin/Debug/net10.0/ThingyDingy.runtimeconfig.json
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/bin/Debug/net10.0/ThingyDingy.dll
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/bin/Debug/net10.0/ThingyDingy.pdb
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.GeneratedMSBuildEditorConfig.editorconfig
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.AssemblyInfoInputs.cache
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.AssemblyInfo.cs
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.csproj.CoreCompileInputs.cache
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.dll
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/refint/ThingyDingy.dll
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.pdb
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ThingyDingy.genruntimeconfig.cache
+/home/theme/RiderProjects/ThingyDingy/ThingyDingy/obj/Debug/net10.0/ref/ThingyDingy.dll

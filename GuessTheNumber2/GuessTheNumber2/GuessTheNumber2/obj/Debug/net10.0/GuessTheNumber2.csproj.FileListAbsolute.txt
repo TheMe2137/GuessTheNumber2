@@ -1,0 +1,14 @@
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/bin/Debug/net10.0/GuessTheNumber2
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/bin/Debug/net10.0/GuessTheNumber2.deps.json
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/bin/Debug/net10.0/GuessTheNumber2.runtimeconfig.json
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/bin/Debug/net10.0/GuessTheNumber2.dll
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/bin/Debug/net10.0/GuessTheNumber2.pdb
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.GeneratedMSBuildEditorConfig.editorconfig
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.AssemblyInfoInputs.cache
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.AssemblyInfo.cs
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.csproj.CoreCompileInputs.cache
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.dll
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/refint/GuessTheNumber2.dll
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.pdb
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/GuessTheNumber2.genruntimeconfig.cache
+/home/theme/RiderProjects/GuessTheNumber2/GuessTheNumber2/obj/Debug/net10.0/ref/GuessTheNumber2.dll
