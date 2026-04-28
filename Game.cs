@@ -23,11 +23,11 @@ public class Game   //class having game oriented objects/methods
         int attempts = 1;
         string[] Phrases =      //array holding goofy phrases that switch each time u hit wrong
         {
-            Settings.CurrentLanguage.Get("p1"),
-            Settings.CurrentLanguage.Get("p2"),
-            Settings.CurrentLanguage.Get("p3"),
-            Settings.CurrentLanguage.Get("p4"),
-            Settings.CurrentLanguage.Get("p5")
+            Settings.CurrentLanguage.Get(LanguageKey.P1),
+            Settings.CurrentLanguage.Get(LanguageKey.P2),
+            Settings.CurrentLanguage.Get(LanguageKey.P3),
+            Settings.CurrentLanguage.Get(LanguageKey.P4),
+            Settings.CurrentLanguage.Get(LanguageKey.P5)
         };
         
         
@@ -37,20 +37,20 @@ public class Game   //class having game oriented objects/methods
         
         if (Settings.limitChoice == 1)  //if player has setting for asking the prompt that is default on, it will ask for limited attempts
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get("lmtd_q"));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.LmtdQ));
             while (!int.TryParse(Console.ReadLine(), out readLimited) || readLimited < 0 || readLimited > 1)
             {
-                Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
             }
 
             
             if (readLimited == 1)       //asks how many attempts (I set 10 max cause why not)
             {
-                Gui.PrintText(Settings.CurrentLanguage.Get("lmtd_q_2"));
+                Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.LmtdQ2));
                 while (!int.TryParse(Console.ReadLine(), out limitedAttempts) || limitedAttempts < 0 ||
                        limitedAttempts > 10)
                 {
-                    Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                    Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
                 }
             }
         }
@@ -58,12 +58,12 @@ public class Game   //class having game oriented objects/methods
         
         if (readLimited == 1)       //game using limited attempt mechanic
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get("guess"));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess));
             int guessedNumber;
             
             while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
             {
-                Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
             }
             
             var startTime = DateTime.Now;
@@ -73,26 +73,26 @@ public class Game   //class having game oriented objects/methods
                 if (guessedNumber < number)     //when you hit smaller
                 {
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
-                    Gui.PrintText(Settings.CurrentLanguage.Get("too_little") + randomPhrases + Settings.CurrentLanguage.Get("current_attempt") + attempts + Settings.CurrentLanguage.Get("attempts_remain") + limitedAttempts);
+                    Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooLittle) + randomPhrases + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts + Settings.CurrentLanguage.Get(LanguageKey.AttemptsRemain) + limitedAttempts);
                     attempts++;
                     limitedAttempts--;
                     Random phraseNumber = new Random();
                     while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
                     {
-                        Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
                     }
                 }
                 else if (guessedNumber > number)        //when u hit higher
                 {
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
-                    Gui.PrintText(Settings.CurrentLanguage.Get("Too_high")+randomPhrases + Settings.CurrentLanguage.Get("current_attempt") + attempts + Settings.CurrentLanguage.Get("attempts_remain")+ limitedAttempts);
+                    Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooHigh)+randomPhrases + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts + Settings.CurrentLanguage.Get(LanguageKey.AttemptsRemain)+ limitedAttempts);
                     attempts++;
                     limitedAttempts--;
                     Random phraseNumber = new Random();
                     
                     while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
                     {
-                        Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
                     }
                 }
                 
@@ -106,28 +106,30 @@ public class Game   //class having game oriented objects/methods
 
             if (limitedAttempts == 0)       //wen u have 0 attempts left u fail and come back to menu
             {
-                Gui.PrintText(Settings.CurrentLanguage.Get("fail"));
+                Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Fail));
                 Console.ReadKey();
                 Console.Clear();
                 return null;
             }
             
             
-            Gui.PrintText(Settings.CurrentLanguage.Get("win"));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Win));
             string playerName = Console.ReadLine();
             Console.Clear();
             newGamePlus = false;    //confirms settings newgameplus setting
-            Score score = new Score(playerName, attempts, difficultyName,newGamePlus, timeSeconds);      //returns variables for leaderboard
+            Score score = newGamePlus 
+                ? new NewGamePlusScore(playerName, attempts, difficultyName, timeSeconds)   //jeżeli new game plus to zrob newgameplusscore jeżeli nie to zwykly score
+                : new Score(playerName, attempts, difficultyName, timeSeconds);
             return score;
         }
         else        //when u dont have limited attempts
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get("guess"));       
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess));       
             int guessedNumber;
             
             while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
             {
-                Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
             }
             
             var startTime = DateTime.Now;//starts stopwatch to measure how much time player spends in game
@@ -141,24 +143,24 @@ public class Game   //class having game oriented objects/methods
                 if (guessedNumber < secretNumber)   //smaller
                 {
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
-                    Gui.PrintText(Settings.CurrentLanguage.Get("too_little")+randomPhrases + Settings.CurrentLanguage.Get("current_attempt") + attempts);
+                    Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooLittle)+randomPhrases + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts);
                     attempts++;
                     Random phraseNumber = new Random();
                     while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
                     {
-                        Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
                     }
                 }
                 
                 else if (guessedNumber > secretNumber)  //bigger
                 {
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
-                    Gui.PrintText(Settings.CurrentLanguage.Get("too_high") +randomPhrases + Settings.CurrentLanguage.Get("current_attempt") + attempts);
+                    Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooHigh) +randomPhrases + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts);
                     Random phraseNumber = new Random();
                     attempts++;
                     while (!int.TryParse(Console.ReadLine(), out guessedNumber) || guessedNumber < 0 || guessedNumber >= maxNumber+1)
                     {
-                        Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
                     }
                 }
                 if (guessedNumber == secretNumber)      //stop time
@@ -169,10 +171,12 @@ public class Game   //class having game oriented objects/methods
                 }
             }
             
-            Gui.PrintText(Settings.CurrentLanguage.Get("win"));     //win
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Win));     //win
             string playerName = Console.ReadLine();
             Console.Clear();
-            Score score = new Score(playerName, attempts, difficultyName,newGamePlus, timeSeconds);
+            Score score = newGamePlus 
+                ? new NewGamePlusScore(playerName, attempts, difficultyName, timeSeconds)
+                : new Score(playerName, attempts, difficultyName, timeSeconds);
             return score;
         }
     }

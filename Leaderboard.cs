@@ -13,13 +13,13 @@ public static class Leaderboard     //class for leaderboard usage
     public static void Show()   //method to print out leaderboard by difficulty
     {
         Console.Clear();
-        Gui.PrintText(Settings.CurrentLanguage.Get("leaderboardshow"));
+        Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.LeaderboardShow));
 
         int choice;
 
         while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)   //validating 
         {
-            Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
         }
 
         switch (choice)
@@ -51,25 +51,25 @@ public static class Leaderboard     //class for leaderboard usage
             .OrderBy(s => s.Attempts)
             .ThenBy(s => s.TimeSeconds);
 
-        Console.WriteLine(Settings.CurrentLanguage.Get("leaderstart"));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.LeaderStart));
 
 
         if (scores.Count == 0)      //checks if scores has any counts
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get("noscores"));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.NoScores)); //sisyphus type shi
         }
         else
         {
             foreach (var score in filteredScores)   //loop printing out rows from leaderboard
             {
-                ngPlusMark = score.isNewGamePlus ? " NG+" : "";  // tenary operator co pisze gdy jest ngplus albo nie jest
-                Console.WriteLine($"{position}. {score.PlayerName} - {score.Attempts} {Settings.CurrentLanguage.Get("attempts")} {Settings.CurrentLanguage.Get("time")}  {score.TimeSeconds}s{ngPlusMark}");
+                ngPlusMark = score.GetScoreType() == "NG+" ? " NG+" : "";  // tenary operator co pisze gdy jest ngplus albo nie jest
+                Console.WriteLine($"{position}. {score.PlayerName} - {score.Attempts} {Settings.CurrentLanguage.Get(LanguageKey.Attempts)} {Settings.CurrentLanguage.Get(LanguageKey.Time)}  {score.TimeSeconds}s{ngPlusMark}");
                 position++;
             }
         }
 
 
-        Console.WriteLine(Settings.CurrentLanguage.Get("return"));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Return));
         Console.ReadKey();
     }
     public static bool HasScores()      //method checking for scores

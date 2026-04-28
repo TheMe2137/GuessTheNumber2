@@ -5,11 +5,11 @@ public class Settings       //class having setting related objects
     public static Language CurrentLanguage = new Polish();
     public static void Show()   //
     {
-        Gui.PrintText(Settings.CurrentLanguage.Get("settings_show"));   //prints out settings gui
+        Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.SettingsShow));   //prints out settings gui
         int choice;
         while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 4)
         {
-            Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
         }
 
         switch (choice) //switch reading what setting option you chose
@@ -30,11 +30,11 @@ public class Settings       //class having setting related objects
 
     public static void ChangeLanguage()     //method to change language
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get("sellang"));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.SelLang));
             int languageChoice;
             while (!int.TryParse(Console.ReadLine(), out languageChoice) || languageChoice < 0 || languageChoice > 3)   //validate
             {
-                Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+                Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
             }
             switch(languageChoice){
                 case 1:
@@ -52,16 +52,16 @@ public class Settings       //class having setting related objects
         public static int limitChoice = 1;
     public static void ChangeLimited()  //method for setting that changes if it prompts the limited attempts prompt
     {
-        Gui.PrintText(Settings.CurrentLanguage.Get("selllimit"));
+        Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.SelLimit));
         while (!int.TryParse(Console.ReadLine(), out limitChoice) || limitChoice < 0 || limitChoice > 3)
         {
-            Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
         }
     }
 
     public static void ClearLeaderboard()   //method clearing leaderboard and confirming it
     {
-        Gui.PrintText(Settings.CurrentLanguage.Get("clearq"));
+        Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.ClearQ));
 
         int confirm;
         while(!int.TryParse(Console.ReadLine(), out confirm) || confirm < 1 || confirm > 2)

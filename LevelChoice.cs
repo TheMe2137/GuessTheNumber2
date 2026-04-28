@@ -4,7 +4,7 @@ public class LevelChoice        //class that holds method to choice the difficul
 {
     public static (int maxNumber, string difficultyName) levelChoice()      //method to chose difficulty
     {
-        Gui.PrintText(Settings.CurrentLanguage.Get("choice_2"));
+        Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Choice2));
         
         int choice = int.Parse(Console.ReadLine());
         

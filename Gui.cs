@@ -7,27 +7,27 @@ public class Gui
         int maxOption;
         Console.Clear();
         Console.WriteLine("=====================");
-        Console.WriteLine(Settings.CurrentLanguage.Get("menu"));
-        Console.WriteLine(Settings.CurrentLanguage.Get("choice_1"));
-        Console.WriteLine(Settings.CurrentLanguage.Get("menu_play"));
-        Console.WriteLine(Settings.CurrentLanguage.Get("menu_play2"));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Menu));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Choice1));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.MenuPlay));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.MenuPlay2));
         if (Leaderboard.HasScores())        //when leaderboard has scores, the option unlocks
         {
             maxOption = 5;
-            Console.WriteLine(Settings.CurrentLanguage.Get("leaderboard"));
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Leaderboard));
         }
         else
         {
             maxOption = 4;
         }
         
-        Console.WriteLine(Settings.CurrentLanguage.Get("settings"));
-        Console.WriteLine(Settings.CurrentLanguage.Get("exit"));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Settings));
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Exit)); //omfg i have to do all ts manually cause i aint supporting clankers ### REMOVE LATER###
         Console.WriteLine("=====================");
         int menuChoice;
         while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice < 1 || menuChoice > maxOption+1)       //validate input
         {
-            Console.WriteLine(Settings.CurrentLanguage.Get("invalid_selection"));
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
         }
         return menuChoice;
     }
