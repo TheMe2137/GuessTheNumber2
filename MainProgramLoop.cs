@@ -10,7 +10,7 @@
                     if (level.maxNumber != 0)
                     {
                         Console.Clear();
-                        Score score = Game.startGame(level.maxNumber, level.difficultyName, false);
+                        Score score = Game.startGame(level.maxNumber, level.difficultyName, false, 8);
                         Leaderboard.AddScore(score);
                     }
 
@@ -22,7 +22,14 @@
                     if (level.maxNumber != 0)
                     {
                         Console.Clear();
-                        Score score = Game.startGame(level.maxNumber, level.difficultyName, true);
+                        int interval = level.difficultyName switch
+                        {
+                            "easy" => 6,
+                            "medium" => 7,
+                            "hard" => 8,
+                            _ => 8
+                        };
+                        Score score = Game.startGame(level.maxNumber, level.difficultyName, true, interval);
                         Leaderboard.AddScore(score);
                     }
 

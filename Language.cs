@@ -76,7 +76,7 @@ class Polish : Language
             case LanguageKey.P3: return "wez sie ogarnij majster";
             case LanguageKey.P4: return "co ty soba wogole reprezentujesz";
             case LanguageKey.P5: return "wez XD przestan";
-            case LanguageKey.NmbChng: return "NUMER SIE ZMIENIL";
+            case LanguageKey.NmbChng: return "NUMER SIE ZMIENIL naciśnij jakikolwiek klawisz aby kontynuować";
             case LanguageKey.ClearQ: return "Czy na pewno chcesz sclearowac wyniki? \n 1. Tak \n 2. Nie";
             default: return "Brak textu";
         }
@@ -122,7 +122,7 @@ class English : Language
             case LanguageKey.P3: return "mate just get a hang of youraself";
             case LanguageKey.P4: return "who do you think you are";
             case LanguageKey.P5: return "god just stop playing atp!";
-            case LanguageKey.NmbChng: return "The NUMBER has CHANGEDs";
+            case LanguageKey.NmbChng: return "The NUMBER has CHANGED Please press any key to continue";
             case LanguageKey.ClearQ: return "Do you surely want to clear your leaderboard scores  \n 1. Yes \n 2. No";
             default: return "No text..";
         }

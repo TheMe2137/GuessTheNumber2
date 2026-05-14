@@ -1,8 +1,8 @@
 namespace GuessTheNumber2;
 
-public class Gui
+public class Gui    //class for gui
 {
-    public  static int ShowMenu()   //method to print out menu using language class
+    public static int ShowMenu()        //method for showing main menu
     {
         int maxOption;
         Console.Clear();
@@ -11,7 +11,7 @@ public class Gui
         Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Choice1));
         Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.MenuPlay));
         Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.MenuPlay2));
-        if (Leaderboard.HasScores())        //when leaderboard has scores, the option unlocks
+        if (Leaderboard.HasScores())        //whenever leaderboard has scores, turns on the last option for leaderboard
         {
             maxOption = 5;
             Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Leaderboard));
@@ -20,19 +20,14 @@ public class Gui
         {
             maxOption = 4;
         }
-        
+
         Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Settings));
-        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Exit)); //omfg i have to do all ts manually cause i aint supporting clankers ### REMOVE LATER###
+        Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.Exit));
         Console.WriteLine("=====================");
-        int menuChoice;
-        while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice < 1 || menuChoice > maxOption+1)       //validate input
-        {
-            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
-        }
-        return menuChoice;
+        return ReadInt(1, maxOption+1);
     }
 
-    public static string PrintText(string text)     //method to print out texts in a pretty way
+    public static string PrintText(string text)     //basic method for printing strings in prettier way
     {
         Console.Clear();
         Console.WriteLine("=====================");
@@ -40,5 +35,14 @@ public class Gui
         Console.WriteLine("=====================");
         return text;
     }
-    
+
+    public static int ReadInt(int min, int max)     //method for validation, so the code is simplier
+    {
+        int result;
+        while (!int.TryParse(Console.ReadLine(), out result) || result < min || result > max)
+        {
+            Console.WriteLine(Settings.CurrentLanguage.Get(LanguageKey.InvalidSelection));
+        }
+        return result;
+    }
 }
