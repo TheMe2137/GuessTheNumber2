@@ -62,7 +62,7 @@ public static class Leaderboard     //class for leaderboard usage
         {
             foreach (var score in filteredScores)   //loop printing out rows from leaderboard
             {
-                ngPlusMark = score.GetScoreType() == "NG+" ? " NG+" : "";  // tenary operator co pisze gdy jest ngplus albo nie jest
+                ngPlusMark = score.GetScoreType() == "NG+" ? " NG+" : "";  // tenary operator that writes ngl plus co pisze gdy jest ngplus albo nie jest
                 Console.WriteLine($"{position}. {score.PlayerName} - {score.Attempts} {Settings.CurrentLanguage.Get(LanguageKey.Attempts)} {Settings.CurrentLanguage.Get(LanguageKey.Time)}  {score.TimeSeconds}s{ngPlusMark}");
                 position++;
             }

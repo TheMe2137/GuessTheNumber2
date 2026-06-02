@@ -48,7 +48,7 @@ public class Game   //class having game oriented objects/methods
         if (readLimited == 1)       //game using limited attempt mechanic
         {
             
-            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess));
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess) + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts);
             
             int guessedNumber = Gui.ReadInt(0, maxNumber);
             
@@ -58,16 +58,16 @@ public class Game   //class having game oriented objects/methods
             {
                 if (guessedNumber < number)     //when you guess a number that is lower
                 {
+                    attempts++;
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
                     
                     Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooLittle) +
                                   randomPhrases + 
-                                  Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + 
-                                  attempts + 
+                                   
+                                  
                                   Settings.CurrentLanguage.Get(LanguageKey.AttemptsRemain) + 
                                   limitedAttempts);
                     
-                    attempts++;
                     limitedAttempts--;
                     
                     Random phraseNumber = new Random();
@@ -75,6 +75,7 @@ public class Game   //class having game oriented objects/methods
                 }
                 else if (guessedNumber > number)        //when you guess a number that is higher
                 {
+                    attempts++;
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
                     
                     Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooHigh)+
@@ -84,7 +85,6 @@ public class Game   //class having game oriented objects/methods
                                   Settings.CurrentLanguage.Get(LanguageKey.AttemptsRemain)+ 
                                   limitedAttempts);
                     
-                    attempts++;
                     limitedAttempts--;
                     
                     Random phraseNumber = new Random();
@@ -123,7 +123,7 @@ public class Game   //class having game oriented objects/methods
         }
         else        //When player chose attempts with no limit
         {
-            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess));     
+            Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.Guess) + Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + attempts);     
             
             int guessedNumber = Gui.ReadInt(0, maxNumber);
             
@@ -139,25 +139,25 @@ public class Game   //class having game oriented objects/methods
                 
                 if (guessedNumber < secretNumber)   //When player guesses number that is lower then number
                 {
+                    attempts++;
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
                     Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooLittle)+
                                   randomPhrases + 
                                   Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + 
                                   attempts);
-                    attempts++;
                     Random phraseNumber = new Random();
                     guessedNumber = Gui.ReadInt(0, maxNumber);
                 }
                 
                 else if (guessedNumber > secretNumber)  //When player guesses number that is higher then number
                 {
+                    attempts++;
                     string randomPhrases = Phrases[Rnd.Next(0, Phrases.Length)];
                     Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.TooHigh) +
                                   randomPhrases + 
                                   Settings.CurrentLanguage.Get(LanguageKey.CurrentAttempt) + 
                                   attempts);
                     Random phraseNumber = new Random();
-                    attempts++;
                     guessedNumber = Gui.ReadInt(0, maxNumber);
                 }
                 if (guessedNumber == secretNumber)      //stops timer and pushes it into variable

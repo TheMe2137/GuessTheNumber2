@@ -1,11 +1,11 @@
 using System.Numerics;
 
 namespace GuessTheNumber2;
-public abstract class Language  //abstract class so u cant use new lang but ya gotta use inheritance thingy 
+public abstract class Language  //abstract class  with polimorphism that changes dependent on what user chooses in settings
 {
     public abstract string Get(LanguageKey key);
 }
-public enum LanguageKey
+public enum LanguageKey     //language ennum holding variables to choose from rather then string
 {
     MenuPlay,
     MenuPlay2,
@@ -36,9 +36,11 @@ public enum LanguageKey
     SelLimit,
     P1, P2, P3, P4, P5,
     NmbChng,
-    ClearQ
+    ClearQ,
+    PromptsYes,
+    PromptsNo
 }
-class Polish : Language
+class Polish : Language     //class for choosing polish phrases
 {
     public override string Get(LanguageKey key)
     {
@@ -59,7 +61,7 @@ class Polish : Language
             case LanguageKey.TooLittle: return "Za malo! ";
             case LanguageKey.TooHigh: return "Za duzo! ";
             case LanguageKey.CurrentAttempt: return " Obecna proba : ";
-            case LanguageKey.AttemptsRemain: return "Prob pozostalo : ";
+            case LanguageKey.AttemptsRemain: return " Prob pozostalo : ";
             case LanguageKey.Fail: return "Przegrales! Nacisnij jakikolwiek przycisk aby wrocic...";
             case LanguageKey.Win: return "Gratulacje! \n Podaj swoja nazwe uzytkownika...";
             case LanguageKey.LeaderboardShow: return "Sala Slaw \n 1.  Latwy \n 2.  Sredni \n 3.  Trudny \n 4. Powrot do menu...";
@@ -69,8 +71,8 @@ class Polish : Language
             case LanguageKey.Time: return "Czas - ";
             case LanguageKey.Return: return "\nNacisnij jakikolwiek klawisz aby wrocic...";
             case LanguageKey.SettingsShow: return "Ustawienia \n 1. Zmien jezyk \n 2. prompty \n 3. Wyczysc Tablice Wynikow \n 4. Wroc";
-            case LanguageKey.SelLang: return "Wybierz jezyk \n 1. English \n 2. Polski \n 3. Wroc";
-            case LanguageKey.SelLimit: return "Wybierz czy chcesz byc pytany o limitowane proby \n 1. tak \n 2. Nie \n 3. Wroc";
+            case LanguageKey.SelLang: return "Obecnie wybrany język " + Settings.currentlang +"\n\nWybierz jezyk \n 1. English \n 2. Polski \n 3. Wroc";
+            case LanguageKey.SelLimit: return "Obecnie pytanie Limitowane próby: " + Settings.currentprompts + "\n\nWybierz czy chcesz byc pytany o limitowane proby \n 1. tak \n 2. Nie \n 3. Wroc";
             case LanguageKey.P1: return "kurcze nie umiesz";
             case LanguageKey.P2: return "frajer...";
             case LanguageKey.P3: return "wez sie ogarnij majster";
@@ -78,13 +80,15 @@ class Polish : Language
             case LanguageKey.P5: return "wez XD przestan";
             case LanguageKey.NmbChng: return "NUMER SIE ZMIENIL naciśnij jakikolwiek klawisz aby kontynuować";
             case LanguageKey.ClearQ: return "Czy na pewno chcesz sclearowac wyniki? \n 1. Tak \n 2. Nie";
+            case LanguageKey.PromptsYes: return "Włączone";
+            case LanguageKey.PromptsNo: return "Wyłączone";
             default: return "Brak textu";
         }
     }
 }
 
 
-class English : Language
+class English : Language    //class for choosing english phrases
 {
     public override string Get(LanguageKey key)
     {
@@ -115,8 +119,8 @@ class English : Language
             case LanguageKey.Time: return "Time - ";
             case LanguageKey.Return: return "\nPress any key to return...";
             case LanguageKey.SettingsShow: return "Settings \n 1. Langugae \n 2. Prompts \n 3. Clear Leaderboard  \n 4. Return";
-            case LanguageKey.SelLang: return "Choose Language \n 1. English \n 2. Polsih \n 3. Return";
-            case LanguageKey.SelLimit: return "Choose if you want to be asked for limited attempts \n 1. Yes \n 2. No \n 3. Return";
+            case LanguageKey.SelLang: return "Current language " + Settings.currentlang + "\n\nChoose Language \n 1. English \n 2. Polsih \n 3. Return";
+            case LanguageKey.SelLimit: return "Current question about prompts: "+Settings.currentprompts+" \n\nChoose if you want to be asked for limited attempts \n 1. Yes \n 2. No \n 3. Return";
             case LanguageKey.P1: return "Come onn...";
             case LanguageKey.P2: return "u stupid??...";
             case LanguageKey.P3: return "mate just get a hang of youraself";
@@ -124,6 +128,8 @@ class English : Language
             case LanguageKey.P5: return "god just stop playing atp!";
             case LanguageKey.NmbChng: return "The NUMBER has CHANGED Please press any key to continue";
             case LanguageKey.ClearQ: return "Do you surely want to clear your leaderboard scores  \n 1. Yes \n 2. No";
+            case LanguageKey.PromptsYes: return "On";
+            case LanguageKey.PromptsNo: return "Off";
             default: return "No text..";
         }
     }

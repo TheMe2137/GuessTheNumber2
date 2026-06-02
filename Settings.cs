@@ -3,6 +3,8 @@ namespace GuessTheNumber2;
 public class Settings       //class having setting related objects
 {
     public static Language CurrentLanguage = new Polish();
+    public static string currentlang = "polski";
+    public static string currentprompts = "włączone";
     public static void Show()   //
     {
         Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.SettingsShow));   //prints out settings gui
@@ -33,9 +35,11 @@ public class Settings       //class having setting related objects
             switch(languageChoice){
                 case 1:
                     Settings.CurrentLanguage = new English();
+                    currentlang = "english";
                     break;
                 case 2:
                     Settings.CurrentLanguage = new Polish();
+                    currentlang = "polski";
                     break;
                 case 3:
                     break;
@@ -48,6 +52,14 @@ public class Settings       //class having setting related objects
     {
         Gui.PrintText(Settings.CurrentLanguage.Get(LanguageKey.SelLimit));
         limitChoice = Gui.ReadInt(0, 3);
+        if (limitChoice != 1)
+        {
+            currentprompts = Settings.CurrentLanguage.Get(LanguageKey.PromptsNo);
+        }
+        else
+        {
+            currentprompts = Settings.CurrentLanguage.Get(LanguageKey.PromptsYes);
+        }
     }
 
     public static void ClearLeaderboard()   //method clearing leaderboard and confirming it
@@ -56,7 +68,6 @@ public class Settings       //class having setting related objects
 
         int confirm =  Gui.ReadInt(1,2);
         
-
         if(confirm == 1)
         {
             Leaderboard.ClearScores();
